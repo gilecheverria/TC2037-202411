@@ -27,20 +27,20 @@ defmodule Basics do
 
 end
 
-IO.puts "Hello there"
-IO.puts Basics.suma 4, 2
-
-IO.puts(Basics.c_to_f(-40))
-IO.puts(Basics.f_to_c(128))
-
-IO.puts(Basics.f_to_c(Basics.c_to_f(36.4)))
+#IO.puts "Hello there"
+#IO.puts Basics.suma 4, 2
+#
+#IO.puts(Basics.c_to_f(-40))
+#IO.puts(Basics.f_to_c(128))
+#
+#IO.puts(Basics.f_to_c(Basics.c_to_f(36.4)))
 
 # Pipe operator
 # Take the previous result as the first argument of a function
-IO.gets("Enter a number: ")
-|> String.trim()
-|> String.to_float()
-|> Basics.c_to_f()
-|> Basics.f_to_c()
-|> Basics.suma(300)
-|> IO.puts()
+#IO.gets("Enter a number: ")
+#|> String.trim()
+#|> String.to_float()
+#|> Basics.c_to_f()
+#|> Basics.f_to_c()
+#|> Basics.suma(300)
+#|> IO.puts()
