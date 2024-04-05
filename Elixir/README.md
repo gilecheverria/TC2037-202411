@@ -5,20 +5,34 @@ Programs to learn Elixir
 - https://elixir-lang.org/getting-started/introduction.html
 - https://joyofelixir.com/toc.html
 - https://learnxinyminutes.com/docs/elixir/
-- https://serokell.io/blog/learn-elixir
 - https://stackoverflow.com/questions/50496783/extract-the-second-element-of-a-tuple-in-a-pipeline
 - https://subscription.packtpub.com/book/application-development/9781788472678/1/ch01lvl1sec14/functions-and-modules
 - https://pragprog.com/titles/jgotp/designing-elixir-systems-with-otp/
+- https://serokell.io/blog/learn-elixir
+- Twitter clone in 15 minutes: https://www.youtube.com/watch?v=MZvmYaFkNJI
 
 ### fn vs def
-- https://stackoverflow.com/questions/18011784/why-are-there-two-kinds-of-functions-in-elixir?rq=1
+- Syntax for calling lambdas: https://stackoverflow.com/questions/18011784/why-are-there-two-kinds-of-functions-in-elixir?rq=1
+
+### The `for` statement
+- https://hashrocket.com/blog/posts/elixir-for-loops-go-beyond-comprehension
 
 ### Graphics libraries
-- https://github.com/milmazz/turtle
-- https://medium.com/@giandr/elixir-scenic-snake-game-b8616b1d7ee0
+- Turtle wrapper: https://github.com/milmazz/turtle
+- Example: https://medium.com/@giandr/elixir-scenic-snake-game-b8616b1d7ee0
     ```
     sudo apt-get install pkgconf libglfw3 libglfw3-dev libglewmx1.13 libglew-dev
     ```
+
+### Other libraries
+- Generation of QR codes: https://github.com/SiliconJungles/eqrcode
+- Image manipulation: https://github.com/elixir-image/image
+- Image manipulation: https://github.com/tyre/imagineer (not updated)
+- Image processing (ImageMagick): https://hexdocs.pm/mogrify/readme.html
+- Phoenix: https://serokell.io/blog/introduction-to-phoenix
+- LiveView: https://elixirschool.com/blog/phoenix-live-view/
+- Command line applications: https://medium.com/blackode/writing-the-command-line-application-in-elixir-78a8d1b1850
+
 
 ### Style guide
 - https://github.com/christopheradams/elixir_style_guide
@@ -69,6 +83,9 @@ Multiply.mult(6, 2)
 ```
 
 ## Tracing function calls
+
+### Using the dbg package
+
 Follow the instructions at:
 - https://stackoverflow.com/questions/50364530/elixir-trace-function-call
 - https://kaiwern.com/posts/2020/11/02/debugging-with-tracing-in-elixir/
@@ -84,6 +101,15 @@ The steps:
 :dbg.stop_clear
 ```
 
+### Using the `binding` function
+Add inside a function the code:
+```elixir
+IO.inspect binding()
+```
+
+## Testing with mix
+Selecting the tests to be executed / skipped
+- https://stackoverflow.com/questions/26150146/how-can-i-make-mix-run-only-specific-tests-from-my-suite-of-tests
 
 ## Tools to use Elixir
 - Add ons for vim: https://bitboxer.de/2016/11/13/vim-for-elixir/
