@@ -8,14 +8,26 @@
 
 defmodule DFA do
 
-  # The automata argument is expressed as:
-  # {delta, accept, q0}
+  # The automatas can be defined as variables in IEX
+  # auto_exam = {&DFA.delta_contains_db/2, [:q2, :q4], :q0}
+  # auto_arithmetic = {&DFA.delta_arithmetic/2, [:int, :float], :start}
+
+  @doc """
+  Entry frunction to evaluate a string with a given automata
+  The automata argument is expressed as:
+  {delta, accept, q0}
+  """
   def evaluate_1(string, automata) do
     string
+    # Split the string into a list of characters
     |> String.graphemes()
     |> eval_dfa(automata)
   end
 
+  @doc """
+  Recursive function to follow the state transitions for each of the characters in the list
+  If the final state is in the accept state list, the string is accepted
+  """
   def eval_dfa([], {_delta, accept, state}) do
     #binding() |> IO.inspect()
     Enum.member?(accept, state)
@@ -27,6 +39,12 @@ defmodule DFA do
   end
 
 
+  @doc """
+  Transition function to recognize strings that contain "db" and where "ad" is invalid
+  Valid states are:
+  - :q2
+  - :q4
+  """
   def delta_contains_db(state, char) do
     case state do
       :q0 -> case char do
@@ -63,7 +81,13 @@ defmodule DFA do
     end
   end
 
-  def delta_int_arithmetic(state, char) do
+  @doc """
+  Transition function to recognize valid arithmetic expressions
+  Valid states are:
+  - :int
+  - :float
+  """
+  def delta_arithmetic(state, char) do
     case state do
       :start -> cond do
         is_sign(char) -> :sign
@@ -99,18 +123,27 @@ defmodule DFA do
 
   end
 
+  @doc """
+  Helper function to identify characters that represent digits
+  """
   def is_digit(char) do
     "0123456789"
     |> String.graphemes()
     |> Enum.member?(char)
   end
 
+  @doc """
+  Helper function to identify characters that represent positive or negative signs for numbers
+  """
   def is_sign(char) do
     Enum.member?(["+", "-"], char)
   end
 
+  @doc """
+  Helper function to identify characters that represent arithmetic operators
+  """
   def is_operator(char) do
-    Enum.member?(["+", "-", "*", "/", "%"], char)
+    Enum.member?(["+", "-", "*", "/", "%", "^", "="], char)
   end
 
 end
