@@ -60,3 +60,14 @@ defmodule Tfile do
   end
 
 end
+
+# Code to read a single command line argument
+[in_filename] = System.argv()
+# Create the name of the output file
+# Add the string "-emails" before the file extension
+out_filename = String.replace(in_filename, ~r/(\.\w+$)/, "-emails\\1")
+# Call the function to find emails
+Tfile.get_emails(in_filename, out_filename)
+
+# Now the program can be called as:
+# elixir 07_file_io.exs loren_emails.txt
