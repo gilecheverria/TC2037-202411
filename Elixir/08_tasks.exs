@@ -56,4 +56,14 @@ defmodule Parallel do
     |> Enum.map(&Task.async(fn -> thread_func(&1) end))
     |> Enum.map(&Task.await(&1))
   end
+
+  # Using a default value for the number of threads to use
+  # Check the cores available on the system
+  def test_threads(_path, num_threads \\ System.schedulers) do
+    1..num_threads
+    |> Enum.map(&Task.async(fn -> thread_func(&1) end))
+    # Remove the timeout of the await function, in case the thread runs for a long time
+    |> Enum.map(&Task.await(&1, :infinity))
+  end
+
 end
